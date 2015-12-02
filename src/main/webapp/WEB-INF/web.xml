@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<display-name>GoogleTest</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>UserServlet</servlet-name>
+		<servlet-class>net.finra.assess.servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserServlet</servlet-name>
+		<url-pattern>/finraassess</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+	    <servlet-name>CombinationsServlet</servlet-name>
+	    <servlet-class>net.finra.assess.servlet.PhoneServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>NumberServlet</servlet-name>
+	    <url-pattern>/getPhoneNumbers</url-pattern>
+	</servlet-mapping>
+	
+	<security-constraint>
+        <web-resource-collection>
+            <web-resource-name>UserServlet</web-resource-name>
+            <url-pattern>/finraassess</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/pages/error.jsp</location>
+    </error-page>
+
+<!--     <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>admin</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint> -->
+	
+	
+</web-app>
